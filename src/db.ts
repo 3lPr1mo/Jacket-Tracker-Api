@@ -1,5 +1,8 @@
 import {DataSource} from 'typeorm'
 import { User } from './entities/User'
+import { Jacket } from './entities/Jacket'
+import { Delivery } from './entities/Delivery'
+import { CategoryJacket } from './entities/CategoryJacket'
 
 export const AppDataSource = new DataSource({
     type: 'postgres',
@@ -10,7 +13,7 @@ export const AppDataSource = new DataSource({
     database: 'jacket-tracker',
     logging: true,
     synchronize: true,
-    entities: [User],
+    entities: [User, Jacket, Delivery, CategoryJacket],
     subscribers: [],
     migrations: [],
 })

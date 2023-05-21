@@ -1,4 +1,5 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { BaseEntity, Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
+import { Delivery } from './Delivery'
 
 @Entity()
 export class User extends BaseEntity {
@@ -11,12 +12,7 @@ export class User extends BaseEntity {
     @Column({length: 50})
     lastname: String;
 
-    @Column("text")
-    password: String;
+    @OneToMany(() => Delivery, (delivery) => delivery.user)
+    deliveries: Delivery[]
 
-    @CreateDateColumn()
-    createdAt: Date;
-
-    @UpdateDateColumn()
-    updatedAt: Date;
 }

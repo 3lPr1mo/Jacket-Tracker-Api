@@ -3,13 +3,12 @@ import { User } from "../entities/User";
 
 export const createUser = async (req: Request, res: Response) => {
   try {
-    const { id, firstname, lastname, password } = req.body; //Extracting the first and lastname of the user
+    const { id, firstname, lastname } = req.body; //Extracting the first and lastname of the user
 
     const user = new User(); // Create an instance
     user.id = id;
     user.firstname = firstname;
     user.lastname = lastname;
-    user.password = password;
 
     await user.save();
     console.log(user);

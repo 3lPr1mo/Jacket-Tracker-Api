@@ -3,8 +3,10 @@ import { createUser, getUsers, updateUser, deleteUser } from '../controllers/use
 
 const router = Router()
 
+//CRUD
+
 //Create
-router.post('/users', createUser)
+router.post('/users', createUser) //localhost:3000/user
 
 //Read
 router.get('/users', getUsers)
