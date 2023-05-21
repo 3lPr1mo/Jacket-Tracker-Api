@@ -13,6 +13,6 @@ export class User extends BaseEntity {
     lastname: String;
 
     @OneToMany(() => Delivery, (delivery) => delivery.user)
-    deliveries: Delivery[]
+    deliveries: Delivery[];
 
 }
