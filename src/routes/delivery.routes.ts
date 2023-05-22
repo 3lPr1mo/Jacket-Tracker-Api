@@ -18,3 +18,5 @@ router.put('/delivery/:id', updateDelivery)
 
 //Delete
 router.delete('/delivery/:id', deleteDelivery)
+
+export default router;

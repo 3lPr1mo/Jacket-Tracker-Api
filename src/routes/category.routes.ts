@@ -13,6 +13,6 @@ router.get('/category', getCategories)
 router.put('/category/:id', updateCategory)
 
 
-router.put('/category/:id', deleteCategory)
+router.delete('/category/:id', deleteCategory)
 
 export default router;

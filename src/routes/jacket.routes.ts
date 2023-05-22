@@ -1,5 +1,5 @@
-import { Router } from "express";
-import {createJacket, getJackets, updateJacket, deleteJacket} from '../controllers/jacket.controllers'
+import {Router} from "express";
+import { createJacket, getJackets, updateJacket, deleteJacket } from '../controllers/jacket.controllers'
 
 const router = Router()
 
