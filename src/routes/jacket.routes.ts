@@ -3,17 +3,16 @@ import {createJacket, getJackets, updateJacket, deleteJacket} from '../controlle
 
 const router = Router()
 
-
-router.post('/jackets', createJacket)
-
-
-router.get('/jackets', getJackets)
+router.post('/jacket', createJacket)
 
 
-router.put('/jackets/:id', updateJacket)
+router.get('/jacket', getJackets)
 
 
-router.delete('/jackets/id', deleteJacket)
+router.put('/jacket/:id', updateJacket)
+
+
+router.delete('/jacket/:id', deleteJacket)
 
 
 export default router;

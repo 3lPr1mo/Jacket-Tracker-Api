@@ -19,7 +19,7 @@ export const createCategoryJacket = async (req: Request, res: Response) => {
             return res.status(500).json({ message: error.message });
         }
     }
-}
+};
 export const getCategories = async (req: Request, res: Response) => {
     try{
         const categories = await CategoryJacket.find();
@@ -29,18 +29,22 @@ export const getCategories = async (req: Request, res: Response) => {
             return res.status(500).json({ message: error.message });
         }
     }
-}
+};
 export const updateCategory = async (req: Request, res: Response) => {
     try{
         const { id } = req.params
         const category = await CategoryJacket.findOneBy<any>({id: parseInt(id)});
+
+        if(!category) return res.status(404).json({message: "Category not foud"})
+
+        await CategoryJacket.update<any>({id: parseInt(id)}, req.body);
         return res.sendStatus(204);
     }catch(error){
         if (error instanceof Error) {
             return res.status(500).json({ message: error.message });
         }
     }
-}
+};
 export const deleteCategory = async (req: Request, res: Response) => {
     try{
         const {id} = req.params
@@ -55,4 +59,4 @@ export const deleteCategory = async (req: Request, res: Response) => {
             return res.status(500).json({ message: error.message });
         }
     }
-}
+};

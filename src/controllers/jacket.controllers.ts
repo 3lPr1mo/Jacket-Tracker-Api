@@ -1,7 +1,5 @@
 import { Request,Response } from "express-serve-static-core";
 import { Jacket } from "../entities/Jacket";
-import { Delivery } from "../entities/Delivery";
-
 
 export const createJacket = async (req: Request, res: Response) =>{
     
@@ -33,7 +31,6 @@ export const createJacket = async (req: Request, res: Response) =>{
 };
 export const getJackets = async (req: Request, res: Response) => {
     try{
-
         const jackets = await Jacket.find();
         return res.json(jackets);
 
@@ -46,11 +43,10 @@ export const getJackets = async (req: Request, res: Response) => {
 export const updateJacket = async (req: Request, res: Response) => {
     try{
         const {id} = req.params;
-        const jacket = await Delivery.findOneBy<any>({
-            id: parseInt(req.params.id),
-        })
+        const jacket = await Jacket.findOneBy<any>({id: parseInt(req.params.id)})
         if(!jacket)
             return res.sendStatus(404).json({message: "Jacket not found"});
+        await Jacket.update<any>({id: parseInt(id)}, req.body);
         return res.sendStatus(204);
     }catch (error){
         if (error instanceof Error){
@@ -70,4 +66,4 @@ export const deleteJacket =async (req : Request, res: Response) => {
             return res.status(500).json({message: error.message})
         }
     }
-}
+};
