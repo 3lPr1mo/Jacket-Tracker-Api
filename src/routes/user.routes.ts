@@ -17,5 +17,4 @@ router.put('/users/:id', updateUser)
 //Delete
 router.delete('/users/:id', deleteUser)
 
-
 export default router;
