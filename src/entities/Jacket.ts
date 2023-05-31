@@ -6,10 +6,7 @@ import { Delivery } from "./Delivery"
 export class Jacket extends BaseEntity{
     @PrimaryColumn()
     id: Number;
-
-    @Column()
-    name: string;
-
+    
     @Column({nullable: true})
     description: string;
 

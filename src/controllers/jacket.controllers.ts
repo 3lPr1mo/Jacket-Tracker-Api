@@ -9,7 +9,6 @@ export const createJacket = async (req: Request, res: Response) =>{
         deliveryDate, deliveries, jacketCategory} = req.body
         const jacket = new Jacket();
         jacket.id = id;
-        jacket.name = name;
         jacket.description = description;
         jacket.size = size;
         jacket.price = price;
