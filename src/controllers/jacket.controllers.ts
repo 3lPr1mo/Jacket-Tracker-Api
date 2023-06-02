@@ -39,6 +39,32 @@ export const getJackets = async (req: Request, res: Response) => {
         }
     }
 };
+
+export const getJacketsWithContext = async (req: Request, res: Response) => {
+    try{
+        const result = 
+        await Jacket.query('select cj."type",j.price, j."quantityDeliveried", j."deliveryDate" from jacket j INNER JOIN category_jacket cj ON j."jacketCategoryId" = cj.id')
+        return res.json(result);
+    }catch (error){
+        if(error instanceof Error){
+            return res.status(500).json({mesagge: error.message})
+        }
+    }
+};
+
+export const cosolidateJackets = async (req: Request, res: Response) => {
+    try{
+        const result = 
+        await Jacket.query('SELECT category_jacket.type AS categoryName, SUM(jacket.price) AS totalPrice, SUM(jacket."quantityDeliveried") AS totalQuantity FROM jacket JOIN category_jacket ON jacket."jacketCategoryId" = category_jacket.id GROUP BY jacket."jacketCategoryId", category_jacket.type;')
+        return res.json(result);
+    }catch (error){
+        if(error instanceof Error){
+            return res.status(500).json({mesagge: error.message})
+        }
+    }
+};
+
+
 export const updateJacket = async (req: Request, res: Response) => {
     try{
         const {id} = req.params;

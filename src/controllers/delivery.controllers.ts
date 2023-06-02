@@ -21,6 +21,22 @@ export const createDelivery = async (req: Request, res: Response) => {
   }
 };
 
+export const getDeliverieswithCategory = async (req: Request, res: Response) => {
+  try {
+    const deliveries = await Delivery.createQueryBuilder('delivery')
+      .leftJoinAndSelect('delivery.jacket', 'jacket')
+      .leftJoinAndSelect('jacket.jacketCategory', 'category')
+      .select(['delivery', 'jacket', 'category'])
+      .getMany();
+  
+    return res.json(deliveries);
+  } catch (error) {
+    if (error instanceof Error) {
+      return res.status(500).json({ message: error.message });
+    }
+  }  
+}; 
+
 export const getDeliveries = async (req: Request, res: Response) => {
   try {
     const deliveries = await Delivery.find();

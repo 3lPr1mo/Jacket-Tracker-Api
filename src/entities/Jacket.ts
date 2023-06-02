@@ -19,7 +19,7 @@ export class Jacket extends BaseEntity{
     @Column()
     quantityDeliveried: number;
 
-    @Column()
+    @Column({type:'date'})
     deliveryDate: Date;
 
     @OneToMany(() => Delivery, (delivery) => delivery.jacket)

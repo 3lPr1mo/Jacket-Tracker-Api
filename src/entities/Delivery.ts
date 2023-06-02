@@ -7,7 +7,7 @@ export class Delivery extends BaseEntity {
     @PrimaryColumn()
     id: number;
 
-    @Column()
+    @Column({type:'date'})
     deliveryDate: Date; 
 
     @ManyToOne(() => User, (user) => user.deliveries)
